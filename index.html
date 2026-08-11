@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f2438">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Length Toolkit">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>Length Unit Converter & Area Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Length Toolkit</h1>
+
+  <div class="install-banner" id="install-banner" hidden>
+    <span id="install-banner-text">Install this app for quick access from your home screen.</span>
+    <button id="install-btn" type="button">Install</button>
+    <button id="install-dismiss" type="button" title="Dismiss">×</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="convert">Convert</button>
+    <button class="tab-btn" data-tab="calculate">Single Shape</button>
+    <button class="tab-btn" data-tab="multi">Multiple Shapes</button>
+    <button class="tab-btn" data-tab="calc">Calculator</button>
+  </div>
+
+  <!-- ===== Unit Converter ===== -->
+  <div class="tab-panel active" id="convert">
+    <div class="field">
+      <label for="value">Value</label>
+      <input type="number" id="value" step="any" inputmode="decimal" placeholder="Enter value">
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="from_unit">From</label>
+        <select id="from_unit">
+          
+          <option value="" selected></option>
+          
+        </select>
+      </div>
+
+      <button id="swap-btn" title="Swap units">⇄</button>
+
+      <div class="field">
+        <label for="to_unit">To</label>
+        <select id="to_unit">
+          
+          <option value="" selected></option>
+          
+        </select>
+      </div>
+    </div>
+
+    <button class="action-btn" id="convert-btn">Convert</button>
+
+    <div class="result" id="convert-result"></div>
+  </div>
+
+  <!-- ===== Perimeter & Area ===== -->
+  <div class="tab-panel" id="calculate">
+    <div class="field-row">
+      <div class="field">
+        <label for="length">Length</label>
+        <input type="number" id="length" step="any" inputmode="decimal" placeholder="Enter length">
+      </div>
+      <div class="field">
+        <label for="breadth">Breadth</label>
+        <input type="number" id="breadth" step="any" inputmode="decimal" placeholder="Enter breadth">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="calc_input_unit">Input unit</label>
+        <select id="calc_input_unit">
+          
+          <option value="" selected></option>
+          
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="calc_output_unit">Show result in</label>
+        <select id="calc_output_unit">
+          
+          <option value="" selected></option>
+          
+        </select>
+      </div>
+    </div>
+
+    <button class="action-btn" id="calculate-btn">Calculate</button>
+
+    <div class="result" id="calculate-result"></div>
+  </div>
+
+  <!-- ===== Multiple Shapes ===== -->
+  <div class="tab-panel" id="multi">
+    <div class="rows-header">
+      <span>Length</span><span>Breadth</span><span>Unit</span><span></span>
+    </div>
+    <div id="rows-container"></div>
+
+    <button class="secondary-btn" id="add-row-btn">+ Add shape</button>
+
+    <div class="field" style="margin-top: 16px;">
+      <label for="multi_output_unit">Show totals in</label>
+      <select id="multi_output_unit">
+        
+        <option value="" selected></option>
+        
+      </select>
+    </div>
+
+    <button class="action-btn" id="calculate-all-btn">Calculate All</button>
+
+    <div class="result" id="multi-result"></div>
+  </div>
+
+  <!-- ===== Calculator ===== -->
+  <div class="tab-panel" id="calc">
+    <div class="calc-display" id="calc-display">0</div>
+
+    <div class="calc-grid">
+      <button class="calc-btn calc-btn--fn" data-action="clear">C</button>
+      <button class="calc-btn calc-btn--fn" data-action="backspace">⌫</button>
+      <button class="calc-btn calc-btn--fn" data-action="percent">%</button>
+      <button class="calc-btn calc-btn--op" data-action="op" data-op="/">÷</button>
+
+      <button class="calc-btn" data-digit="7">7</button>
+      <button class="calc-btn" data-digit="8">8</button>
+      <button class="calc-btn" data-digit="9">9</button>
+      <button class="calc-btn calc-btn--op" data-action="op" data-op="*">×</button>
+
+      <button class="calc-btn" data-digit="4">4</button>
+      <button class="calc-btn" data-digit="5">5</button>
+      <button class="calc-btn" data-digit="6">6</button>
+      <button class="calc-btn calc-btn--op" data-action="op" data-op="-">−</button>
+
+      <button class="calc-btn" data-digit="1">1</button>
+      <button class="calc-btn" data-digit="2">2</button>
+      <button class="calc-btn" data-digit="3">3</button>
+      <button class="calc-btn calc-btn--op" data-action="op" data-op="+">+</button>
+
+      <button class="calc-btn" data-action="sign">±</button>
+      <button class="calc-btn" data-digit="0">0</button>
+      <button class="calc-btn" data-action="decimal">.</button>
+      <button class="calc-btn calc-btn--eq" data-action="equals">=</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
